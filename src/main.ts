@@ -17,53 +17,60 @@ let magazine:Product[] = [
     {img: "https://i01.appmifile.com/webfile/globalimg/products/m/redmi-note-10-pro/overview16-s1.jpg" ,name: "Redmi note 10 pro"  ,cost: "350$" ,comment: "Rangi Olov rang"}
 ]
 
-function  render(product: Product) {
-    let card = document.createElement('div')
-    card.className = "card"
-    card.style.width = '18' + 'rem'
-    card.style.overflow = 'hidden'
+function  render(products: Product[]) {
+    for (const product of products) {
+        let card = document.createElement('div')
+        card.className = "card"
+        card.style.width = '18' + 'rem'
+        card.style.overflow = 'hidden'
+        
+        let img = document.createElement('img')
+        img.className = "card-img-top ratio ratio-1x1"
+        img.setAttribute('src' , `${product.img}`)
+        img.style.width = '18' + 'rem'
+        img.style.height = '300' + 'px'
     
-    let img = document.createElement('img')
-    img.className = "card-img-top ratio ratio-1x1"
-    img.setAttribute('src' , `${product.img}`)
-    img.style.width = '18' + 'rem'
-    img.style.height = '300' + 'px'
-
-
-    let cardBody = document.createElement('div')
-    cardBody.className = "card-body"
-
-    let title = document.createElement('h3')
-    title.className = "card-title"
-    title.innerText = `${product.name}`
     
-    let card__text = document.createElement('p')
-    card__text.className = 'card-text'
-
-    let cost = document.createElement('h3')
-    cost.className = 'text-success'
-    cost.innerText = `${product.cost}`
-/*     card__text.innerText = `${magazine[0].comment}`
- */
-    let a = document.createElement('a')
-    a.className = 'btn btn-primary w-50'
-    a.innerText = "Buy"
-    a.setAttribute('href' , '#')
-
-    body.appendChild(card)
-    card.appendChild(img)
-    card.appendChild(cardBody)
-    cardBody.appendChild(title)
-    cardBody.appendChild(card__text)
-    cardBody.appendChild(a)
-    card__text.appendChild(cost)
-    card__text.append(product.comment)
+        let cardBody = document.createElement('div')
+        cardBody.className = "card-body"
+    
+        let title = document.createElement('h3')
+        title.className = "card-title"
+        title.innerText = `${product.name}`
+        
+        let card__text = document.createElement('p')
+        card__text.className = 'card-text'
+    
+        let cost = document.createElement('h3')
+        cost.className = 'text-success'
+        cost.innerText = `${product.cost}`
+    /*     card__text.innerText = `${magazine[0].comment}`
+     */
+        let a = document.createElement('a')
+        a.className = 'btn btn-primary w-50'
+        a.innerText = "Buy"
+        a.setAttribute('href' , '#')
+    
+        body.appendChild(card)
+        card.appendChild(img)
+        card.appendChild(cardBody)
+        cardBody.appendChild(title)
+        cardBody.appendChild(card__text)
+        cardBody.appendChild(a)
+        card__text.appendChild(cost)
+        card__text.append(product.comment)
+    }
 }
-render(magazine[4])
-render(magazine[0])
-render(magazine[7])
-render(magazine[1])
-render(magazine[5])
-render(magazine[3])
-render(magazine[6])
-render(magazine[2])
+render(magazine)
+
+let input:HTMLInputElement = document.querySelector('#search')!
+let submit:HTMLElement = document.querySelector('#submit')!
+
+submit.addEventListener('click' , () => {
+    if(input.value === ''){
+        return
+    }
+    else{
+        
+    }
+})
