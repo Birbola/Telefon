@@ -7,10 +7,10 @@ type Product = {
 }
 
 let magazine:Product[] = [ 
-    {img: "https://www.ixbt.com/td/iphone-7-test/iphone-7.png" , name: "IPONE 7" , cost: "120$" , comment: "Rangi Qizil"},
+    {img: "https://www.ixbt.com/td/iphone-7-test/iphone-7.png" , name: "IPHONE 7" , cost: "120$" , comment: "Rangi Qizil"},
     {img: "https://www.sotmarket.uz/upload/iblock/377/377aea5d7f6c2c1aa0cdbdf7b61365b3.jpg" ,name: "IPHONE 8" , cost: "130%" , comment: "Rangi Gold"},
-    {img: "https://appleinsider.ru/wp-content/uploads/2020/03/iphone_8_plus_and_8-740x568.jpg" ,name: "IPOHE 9" , cost: "200$" , comment: "Rangi Pushti"},
-    {img: "https://www.creditasia.uz/upload/iblock/86f/smartfon-iphone-12-pro-256gb-pacific-blue.jpg" ,name: "IPONE 12 Pro Max" ,cost: "1200$" ,comment: "Rangi Ko'k"},
+    {img: "https://appleinsider.ru/wp-content/uploads/2020/03/iphone_8_plus_and_8-740x568.jpg" ,name: "IPHONE 9" , cost: "200$" , comment: "Rangi Pushti"},
+    {img: "https://www.creditasia.uz/upload/iblock/86f/smartfon-iphone-12-pro-256gb-pacific-blue.jpg" ,name: "IPHONE 12 Pro Max" ,cost: "1200$" ,comment: "Rangi Ko'k"},
     {img: "https://220volt.uz/image/cache/catalog/iPhone/iphone-13pro-Max-1000x1000.jpg" ,name: "IPHONE 13 Pro Max" ,cost: "1300$" ,comment: "Rangi Kok"},
     {img: "https://olcha.uz/image/600x600/products/GkMT0H5gZ2BXda3lUWFrn49EM8RuruogXV2fOqKP6jYdzk9Bx0jC3T3vTawa.jpeg" ,name: "S 21 Ultra" ,cost:"1100$" ,comment: "Rangi Qora"},
     {img: "https://phonesdata.com/files/models/vivo--Y50-229.jpg" ,name: "Vivo Y50" ,cost: "800$" ,comment: "Rangi Ko'k"},
@@ -18,6 +18,7 @@ let magazine:Product[] = [
 ]
 
 function  render(products: Product[]) {
+    body.innerHTML = ''
     for (const product of products) {
         let card = document.createElement('div')
         card.className = "card"
@@ -68,9 +69,11 @@ let submit:HTMLElement = document.querySelector('#submit')!
 
 submit.addEventListener('click' , () => {
     if(input.value === ''){
-        return
+        let search = magazine.filter(mag => mag.name)
+        render(search)
     }
     else{
-        
+        let search = magazine.filter(mag => mag.name.toLowerCase().includes(input.value.toLowerCase()))
+        render(search)
     }
 })
